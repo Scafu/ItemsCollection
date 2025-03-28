@@ -1,0 +1,57 @@
+/*
+    CLASSE MAINWINDOW
+*/
+
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
+
+#include "AbstractItem.h"
+
+#include <QMainWindow>
+#include <QStackedWidget>
+#include <QToolBar>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QScrollArea>
+#include <QPushButton>
+#include <QFont>
+#include <QLineEdit>
+
+class Collezione;
+
+class MainWindow : public QMainWindow
+{
+    Q_OBJECT
+
+public:
+    MainWindow(QWidget *parent = nullptr);
+    QStackedWidget *getPila() const;
+    void updateAreaItem();
+
+    // Funzioni legate con la Toolbar
+    void showHome();
+    void showAbout();
+    void showCrea();
+    void closeApplication();
+
+    // Funzioni legate con gli Items
+    void itemCliccato(QSharedPointer<AbstractItem> itemClicked);
+    void showTypedForm(const QString &typeChosen);
+
+private:
+    QFont customFont;
+    QWidget *homePage;
+    QWidget *aboutPage;
+    QLineEdit *searchBar;
+    QScrollArea *itemsArea;
+    QStackedWidget *stack;
+    QToolBar *toolBar;
+    QPushButton *gameButtonFilter;
+    QPushButton *bookButtonFilter;
+    QPushButton *musicButtonFilter;
+    QVBoxLayout *verticalLayout;
+    QHBoxLayout *buttonFilterLayout;
+    QHBoxLayout *searchBarLayout;
+};
+
+#endif

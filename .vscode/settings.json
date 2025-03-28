@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "qsharedpointer": "cpp",
+        "new": "cpp",
+        "*.tcc": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "qicon": "cpp",
+        "qapplication": "cpp",
+        "qlineedit": "cpp",
+        "qlabel": "cpp"
+    }
+}
