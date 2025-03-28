@@ -10,6 +10,7 @@
         "qicon": "cpp",
         "qapplication": "cpp",
         "qlineedit": "cpp",
-        "qlabel": "cpp"
+        "qlabel": "cpp",
+        "qfiledialog": "cpp"
     }
 }

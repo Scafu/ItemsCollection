@@ -8,6 +8,7 @@ release/GameCreationForm.o
 release/ItemCreationForm.o
 release/ItemPageUI.o
 release/ItemWidgetUI.o
+release/ItemPageEditUI.o
 release/main.o
 release/MainWindow.o
 release/Music.o
@@ -23,5 +24,6 @@ release/moc_GameCreationForm.o
 release/moc_ItemCreationForm.o
 release/moc_ItemPageUI.o
 release/moc_ItemWidgetUI.o
+release/moc_ItemPageEditUI.o
 release/moc_MainWindow.o
 release/moc_MusicCreationForm.o

@@ -9,7 +9,6 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QLabel>
-#include <QLineEdit>
 #include <QFormLayout>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -21,31 +20,42 @@ class ItemPageUI : public QWidget
 
 public:
     ItemPageUI(QSharedPointer<AbstractItem> itemChosen, QWidget *parent = nullptr);
-    QLayout *showPage(bool editMode, QSharedPointer<AbstractItem> item);
-    void updateFields();
+    QLayout *showPage(QSharedPointer<AbstractItem> item);
+
+signals:
+    void backClicked();
+    void editClicked();
+    void removeClicked();
 
 private:
     QSharedPointer<AbstractItem> item;
-    QMap<QString, QVariant> fieldsEdited;
 
-    QLineEdit *title;
-    QLineEdit *year;
-    QLineEdit *description;
-    QLineEdit *publisher;
-    QLineEdit *platform;
-    QLineEdit *genre;
-    QLineEdit *author;
-    QLineEdit *numPages;
-    QLineEdit *numChapters;
-    QLineEdit *language;
+    QLabel *itemTitle;
+    QLabel *itemYear;
+    QLabel *itemCover;
+    QLabel *itemDescription;
+    QLabel *itemPublisher;
+    QLabel *itemPlatform;
+    QLabel *itemGenre;
+    QLabel *itemAuthor;
+    QLabel *itemNumPages;
+    QLabel *itemNumChapters;
+    QLabel *itemLanguage;
+    QLabel *itemArtist;
+    QLabel *itemBand;
+    QLabel *itemAlbum;
+
     QFont customFont;
     QSizePolicy *customSizePolicy;
     QWidget *containerWidget;
+
+    QPushButton *confirmButton;
     QPushButton *backButton;
     QPushButton *editButton;
     QPushButton *deleteButton;
+
     QLayout *detailsLayout;
-    QFormLayout *detailsLayoutEdit;
+    QVBoxLayout *detailsLayoutNoEdit;
     QVBoxLayout *pageLayout;
     QVBoxLayout *containerLayout;
     QHBoxLayout *layoutAusiliare;

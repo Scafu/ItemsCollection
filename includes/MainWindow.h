@@ -6,7 +6,8 @@
 #define MAINWINDOW_H
 
 #include "AbstractItem.h"
-
+#include "ItemPageUI.h"
+#include "ItemPageEditUI.h"
 #include <QMainWindow>
 #include <QStackedWidget>
 #include <QToolBar>
@@ -32,7 +33,6 @@ public:
     void showHome();
     void showAbout();
     void showCrea();
-    void closeApplication();
 
     // Funzioni legate con gli Items
     void itemCliccato(QSharedPointer<AbstractItem> itemClicked);

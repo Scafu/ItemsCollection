@@ -6,7 +6,6 @@
 #include "VisitorReadForm.h"
 #include "VisitorReadItem.h"
 #include "ItemWidgetUI.h"
-
 #include <QIcon>
 #include <QApplication>
 #include <QLabel>
@@ -32,6 +31,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     setCentralWidget(mainPage);
     showHome();
 }
+
+// AREA HOME INSIEME ALL'AREA ITEM E GESTIONE DEI SINGOLI ITEM
 
 void MainWindow::showHome()
 {
@@ -77,7 +78,7 @@ void MainWindow::showHome()
         layoutRicerca->addLayout(searchBarLayout);
 
         // Scritta centrale e Area Items
-        QLabel *collezioneLabel = new QLabel("La tua Collezione");
+        QLabel *collezioneLabel = new QLabel("La Tua Collezione");
         customFont.setPointSize(20);
         collezioneLabel->setFont(customFont);
         itemsArea = new QScrollArea;
@@ -116,7 +117,7 @@ void MainWindow::updateAreaItem()
     QWidget *containerItems = new QWidget;
     QGridLayout *containerLayout = new QGridLayout(containerItems);
     containerItems->setLayout(containerLayout);
-    containerItems->setStyleSheet("border:2px solid rgba(255, 255, 255, 0.06); background-color: rgba(255, 255, 255, 0.06);");
+    containerItems->setStyleSheet("border:2px solid rgba(255, 255, 255, 0.06); background-color: rgba(0, 0, 0, 0.07);");
 
     int rows = 0,
         columns = 0;
@@ -125,7 +126,7 @@ void MainWindow::updateAreaItem()
         ItemWidgetUI *singleItem = new ItemWidgetUI(it);
         containerLayout->addWidget(singleItem, rows, columns);
         columns++;
-        // connect(singleItem, &ItemWidgetUI::widgetClicked, this, &MainWindow::itemCliccato);
+        connect(singleItem, &ItemWidgetUI::widgetClicked, this, &MainWindow::itemCliccato);
         if (columns >= 4)
         {
             columns = 0;
@@ -135,11 +136,37 @@ void MainWindow::updateAreaItem()
     itemsArea->setWidget(containerItems);
 }
 
+// FUNZIONE CHE VIENE CHIAMATA QUANDO SI SCHIACCIA SUL SINGOLO ITEM NELLA COLLEZIONE
+
 void MainWindow::itemCliccato(QSharedPointer<AbstractItem> item)
 {
-    ;
+    ItemPageUI *widgetPage = new ItemPageUI(item);
+
+    stack->addWidget(widgetPage);
+    stack->setCurrentWidget(widgetPage);
+
+    // Connessioni
+    connect(widgetPage, &ItemPageUI::backClicked, this, [&]()
+            { stack->setCurrentWidget(homePage); });
+    connect(widgetPage, &ItemPageUI::removeClicked, this, [this, item]()
+            { 
+            Collezione::getCollezione().removeItem(item);
+            Collezione::getCollezione().toFileJSON(QApplication::applicationDirPath()+ "/../JSON/Items.json");
+            showHome(); });
+    connect(stack, &QStackedWidget::currentChanged, widgetPage, QWidget::deleteLater);
+
+    connect(widgetPage, &ItemPageUI::editClicked, this, [this, item]()
+            {
+                ItemPageEditUI *widgetPageEdit = new ItemPageEditUI(item);
+                stack->addWidget(widgetPageEdit);
+                stack->setCurrentWidget(widgetPageEdit);
+                connect(widgetPageEdit, &ItemPageEditUI::confirmClicked, this, [&]()
+                        { showHome(); }); 
+                connect(widgetPageEdit, &ItemPageEditUI::backClicked, this, [&](){stack->setCurrentWidget(homePage);});
+            connect(stack, &QStackedWidget::currentChanged, widgetPageEdit, QWidget::deleteLater); });
 }
 
+// AREA DI CREAZIONE DEL SINGOLO ITEM E VISIONE DEI FORM IN BASE AL TIPO CHE SI VUOLE CREARE
 void MainWindow::showCrea()
 {
     QWidget *itemType = new QWidget(this);
@@ -236,6 +263,29 @@ void MainWindow::showTypedForm(const QString &typeChosen)
     Collezione::getCollezione().addItem(itemCreato);
     Collezione::getCollezione().toFileJSON(QApplication::applicationDirPath() + "/../JSON/Items.json");
     showHome();
+}
+
+// AREA ABOUT
+void MainWindow::showAbout()
+{
+    if (!aboutPage)
+    {
+        aboutPage = new QWidget;
+        QVBoxLayout *layoutAbout = new QVBoxLayout();
+        QLabel *label = new QLabel("La collezioni di oggetti è un progetto valido per l'anno accademico 2024/2025 per il corso Programmazione ad Oggetti, \ned una vera e propria collezione di item sfruttando il framework QT in linguaggio C++");
+        customFont.setPointSize(16);
+        label->setFont(customFont);
+        label->setWordWrap(true);
+        label->setAlignment(Qt::AlignCenter);
+        layoutAbout->addWidget(label);
+        aboutPage->setLayout(layoutAbout);
+        stack->addWidget(aboutPage);
+        stack->setCurrentWidget(aboutPage);
+    }
+    else
+    {
+        stack->setCurrentWidget(aboutPage);
+    }
 }
 
 QStackedWidget *MainWindow::getPila() const { return stack; }

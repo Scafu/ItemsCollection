@@ -18,7 +18,7 @@ CustomToolBar::CustomToolBar(MainWindow *mainWindow, QWidget *parent) : QToolBar
     addWidget(exit);
 
     connect(home, &QPushButton::clicked, mainWindow, &MainWindow::showHome);
-    connect(about, &QPushButton::clicked, mainWindow, &MainWindow::close);
+    connect(about, &QPushButton::clicked, mainWindow, &MainWindow::showAbout);
     connect(crea, &QPushButton::clicked, mainWindow, &MainWindow::showCrea);
     connect(exit, &QPushButton::clicked, mainWindow, &MainWindow::close);
 

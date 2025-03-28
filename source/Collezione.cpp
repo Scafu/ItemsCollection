@@ -24,7 +24,7 @@ void Collezione::editItem(QSharedPointer<AbstractItem> newItem, QMap<QString, QV
             editedBook->setTitle(fieldToEdit.value("Titolo", QVariant(editedBook->getTitle())).toString());
             editedBook->setYear(fieldToEdit.value("Anno", QVariant(editedBook->getYear())).toInt());
             editedBook->setCoverImage(fieldToEdit.value("Immagine di Copertina", QVariant(editedBook->getCoverImage())).toString());
-            editedBook->setDescription(fieldToEdit.value("Immagine di Copertina", QVariant(editedBook->getDescription())).toString());
+            editedBook->setDescription(fieldToEdit.value("Descrizione", QVariant(editedBook->getDescription())).toString());
             editedBook->setAuthor(fieldToEdit.value("Autore", QVariant(editedBook->getAuthor())).toString());
             editedBook->setLanguage(fieldToEdit.value("Lingua", QVariant(editedBook->getLanguage())).toString());
             editedBook->setNumPages(fieldToEdit.value("Numero di Pagine", QVariant(editedBook->getNumPages())).toInt());
@@ -36,10 +36,11 @@ void Collezione::editItem(QSharedPointer<AbstractItem> newItem, QMap<QString, QV
             editedGame->setTitle(fieldToEdit.value("Titolo", QVariant(editedGame->getTitle())).toString());
             editedGame->setYear(fieldToEdit.value("Anno", QVariant(editedGame->getYear())).toInt());
             editedGame->setCoverImage(fieldToEdit.value("Immagine di Copertina", QVariant(editedGame->getCoverImage())).toString());
-            editedGame->setDescription(fieldToEdit.value("Immagine di Copertina", QVariant(editedGame->getDescription())).toString());
-            editedGame->setPublisher(fieldToEdit.value("Autore", QVariant(editedGame->getPublisher())).toString());
-            editedGame->setPlatform(fieldToEdit.value("Lingua", QVariant(editedGame->getPlatform())).toString());
-            editedGame->setGenre(fieldToEdit.value("Numero di Pagine", QVariant(editedGame->getGenre())).toString());
+            editedGame->setDescription(fieldToEdit.value("Descrizione", QVariant(editedGame->getDescription())).toString());
+            editedGame->setPublisher(fieldToEdit.value("Publisher", QVariant(editedGame->getPublisher())).toString());
+            editedGame->setPlatform(fieldToEdit.value("Piattaforma", QVariant(editedGame->getPlatform())).toString());
+            editedGame->setGenre(fieldToEdit.value("Genere", QVariant(editedGame->getGenre())).toString());
+            qDebug() << editedGame->getPublisher();
         }
         auto editedMusic = qSharedPointerDynamicCast<Music>(it);
         if (editedMusic && editedMusic->getTitle() == newItem->getTitle())
@@ -47,13 +48,13 @@ void Collezione::editItem(QSharedPointer<AbstractItem> newItem, QMap<QString, QV
             editedMusic->setTitle(fieldToEdit.value("Titolo", QVariant(editedMusic->getTitle())).toString());
             editedMusic->setYear(fieldToEdit.value("Anno", QVariant(editedMusic->getYear())).toInt());
             editedMusic->setCoverImage(fieldToEdit.value("Immagine di Copertina", QVariant(editedMusic->getCoverImage())).toString());
-            editedMusic->setDescription(fieldToEdit.value("Immagine di Copertina", QVariant(editedMusic->getDescription())).toString());
-            editedMusic->setArtist(fieldToEdit.value("Autore", QVariant(editedMusic->getArtist())).toString());
-            editedMusic->setBand(fieldToEdit.value("Lingua", QVariant(editedMusic->getBand())).toString());
-            editedMusic->setAlbum(fieldToEdit.value("Numero di Pagine", QVariant(editedMusic->getAlbum())).toString());
+            editedMusic->setDescription(fieldToEdit.value("Descrizione", QVariant(editedMusic->getDescription())).toString());
+            editedMusic->setArtist(fieldToEdit.value("Artista", QVariant(editedMusic->getArtist())).toString());
+            editedMusic->setBand(fieldToEdit.value("Band", QVariant(editedMusic->getBand())).toString());
+            editedMusic->setAlbum(fieldToEdit.value("Album", QVariant(editedMusic->getAlbum())).toString());
         }
     }
-    toFileJSON(QApplication::applicationDirPath() + "JSON/Items.json");
+    toFileJSON(QApplication::applicationDirPath() + "/../JSON/Items.json");
 }
 
 void Collezione::removeItem(QSharedPointer<AbstractItem> item)

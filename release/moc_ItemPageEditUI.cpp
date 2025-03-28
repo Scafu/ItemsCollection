@@ -1,12 +1,12 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'ItemPageUI.h'
+** Meta object code from reading C++ file 'ItemPageEditUI.h'
 **
 ** Created by: The Qt Meta Object Compiler version 68 (Qt 6.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../includes/ItemPageUI.h"
+#include "../includes/ItemPageEditUI.h"
 #include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
 
@@ -17,7 +17,7 @@
 
 #include <QtCore/qxptype_traits.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'ItemPageUI.h' doesn't include <QObject>."
+#error "The header file 'ItemPageEditUI.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
 #error "This file was generated using the moc from 6.8.1. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -32,23 +32,23 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
-struct qt_meta_tag_ZN10ItemPageUIE_t {};
+struct qt_meta_tag_ZN14ItemPageEditUIE_t {};
 } // unnamed namespace
 
 
 #ifdef QT_MOC_HAS_STRINGDATA
-static constexpr auto qt_meta_stringdata_ZN10ItemPageUIE = QtMocHelpers::stringData(
-    "ItemPageUI",
+static constexpr auto qt_meta_stringdata_ZN14ItemPageEditUIE = QtMocHelpers::stringData(
+    "ItemPageEditUI",
     "backClicked",
     "",
-    "editClicked",
+    "confirmClicked",
     "removeClicked"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
 #endif // !QT_MOC_HAS_STRINGDATA
 
-Q_CONSTINIT static const uint qt_meta_data_ZN10ItemPageUIE[] = {
+Q_CONSTINIT static const uint qt_meta_data_ZN14ItemPageEditUIE[] = {
 
  // content:
       12,       // revision
@@ -74,18 +74,18 @@ Q_CONSTINIT static const uint qt_meta_data_ZN10ItemPageUIE[] = {
        0        // eod
 };
 
-Q_CONSTINIT const QMetaObject ItemPageUI::staticMetaObject = { {
+Q_CONSTINIT const QMetaObject ItemPageEditUI::staticMetaObject = { {
     QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_meta_stringdata_ZN10ItemPageUIE.offsetsAndSizes,
-    qt_meta_data_ZN10ItemPageUIE,
+    qt_meta_stringdata_ZN14ItemPageEditUIE.offsetsAndSizes,
+    qt_meta_data_ZN14ItemPageEditUIE,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_tag_ZN10ItemPageUIE_t,
+    qt_incomplete_metaTypeArray<qt_meta_tag_ZN14ItemPageEditUIE_t,
         // Q_OBJECT / Q_GADGET
-        QtPrivate::TypeAndForceComplete<ItemPageUI, std::true_type>,
+        QtPrivate::TypeAndForceComplete<ItemPageEditUI, std::true_type>,
         // method 'backClicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'editClicked'
+        // method 'confirmClicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'removeClicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
@@ -93,13 +93,13 @@ Q_CONSTINIT const QMetaObject ItemPageUI::staticMetaObject = { {
     nullptr
 } };
 
-void ItemPageUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void ItemPageEditUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    auto *_t = static_cast<ItemPageUI *>(_o);
+    auto *_t = static_cast<ItemPageEditUI *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->backClicked(); break;
-        case 1: _t->editClicked(); break;
+        case 1: _t->confirmClicked(); break;
         case 2: _t->removeClicked(); break;
         default: ;
         }
@@ -107,22 +107,22 @@ void ItemPageUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _q_method_type = void (ItemPageUI::*)();
-            if (_q_method_type _q_method = &ItemPageUI::backClicked; *reinterpret_cast<_q_method_type *>(_a[1]) == _q_method) {
+            using _q_method_type = void (ItemPageEditUI::*)();
+            if (_q_method_type _q_method = &ItemPageEditUI::backClicked; *reinterpret_cast<_q_method_type *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
             }
         }
         {
-            using _q_method_type = void (ItemPageUI::*)();
-            if (_q_method_type _q_method = &ItemPageUI::editClicked; *reinterpret_cast<_q_method_type *>(_a[1]) == _q_method) {
+            using _q_method_type = void (ItemPageEditUI::*)();
+            if (_q_method_type _q_method = &ItemPageEditUI::confirmClicked; *reinterpret_cast<_q_method_type *>(_a[1]) == _q_method) {
                 *result = 1;
                 return;
             }
         }
         {
-            using _q_method_type = void (ItemPageUI::*)();
-            if (_q_method_type _q_method = &ItemPageUI::removeClicked; *reinterpret_cast<_q_method_type *>(_a[1]) == _q_method) {
+            using _q_method_type = void (ItemPageEditUI::*)();
+            if (_q_method_type _q_method = &ItemPageEditUI::removeClicked; *reinterpret_cast<_q_method_type *>(_a[1]) == _q_method) {
                 *result = 2;
                 return;
             }
@@ -130,20 +130,20 @@ void ItemPageUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     }
 }
 
-const QMetaObject *ItemPageUI::metaObject() const
+const QMetaObject *ItemPageEditUI::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *ItemPageUI::qt_metacast(const char *_clname)
+void *ItemPageEditUI::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_ZN10ItemPageUIE.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_ZN14ItemPageEditUIE.stringdata0))
         return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
-int ItemPageUI::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int ItemPageEditUI::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -162,19 +162,19 @@ int ItemPageUI::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void ItemPageUI::backClicked()
+void ItemPageEditUI::backClicked()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 
 // SIGNAL 1
-void ItemPageUI::editClicked()
+void ItemPageEditUI::confirmClicked()
 {
     QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 
 // SIGNAL 2
-void ItemPageUI::removeClicked()
+void ItemPageEditUI::removeClicked()
 {
     QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
 }

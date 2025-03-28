@@ -30,6 +30,7 @@ HEADERS += includes/AbstractConstVisitor.h \
            includes/ItemCreationForm.h \
            includes/ItemPageUI.h \
            includes/ItemWidgetUI.h \
+           includes/ItemPageEditUI.h \
            includes/MainWindow.h \
            includes/Music.h \
            includes/MusicCreationForm.h \
@@ -47,11 +48,12 @@ SOURCES += source/AbstractItem.cpp \
            source/ItemCreationForm.cpp \
            source/ItemPageUI.cpp \
            source/ItemWidgetUI.cpp \
+           source/ItemPageEditUI.cpp \
            source/main.cpp \
            source/MainWindow.cpp \
            source/Music.cpp \
            source/MusicCreationForm.cpp \
            source/VisitorCreateForm.cpp \
            source/VisitorReadForm.cpp \
-           source/VisitorReadItem.cpp
+           source/VisitorReadItem.cpp 
 RESOURCES += resources.qrc
