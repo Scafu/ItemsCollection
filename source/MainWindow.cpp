@@ -199,7 +199,8 @@ void MainWindow::itemCliccato(QSharedPointer<AbstractItem> item)
             Collezione::getCollezione().removeItem(item);
             Collezione::getCollezione().toFileJSON(QApplication::applicationDirPath()+ "/../JSON/Items.json");
             showHome(); });
-    connect(stack, &QStackedWidget::currentChanged, widgetPage, QWidget::deleteLater);
+    connect(stack, &QStackedWidget::currentChanged, widgetPage, [widgetPage]
+            { widgetPage->deleteLater(); });
 
     connect(widgetPage, &ItemPageUI::editClicked, this, [this, item]()
             {
@@ -209,7 +210,9 @@ void MainWindow::itemCliccato(QSharedPointer<AbstractItem> item)
                 connect(widgetPageEdit, &ItemPageEditUI::confirmClicked, this, [&]()
                         { showHome(); }); 
                 connect(widgetPageEdit, &ItemPageEditUI::backClicked, this, [&](){stack->setCurrentWidget(homePage);});
-            connect(stack, &QStackedWidget::currentChanged, widgetPageEdit, QWidget::deleteLater); });
+            connect(stack, &QStackedWidget::currentChanged, widgetPageEdit, [widgetPageEdit]{
+                widgetPageEdit->deleteLater();
+            }); });
 }
 
 // AREA DI CREAZIONE DEL SINGOLO ITEM E VISIONE DEI FORM IN BASE AL TIPO CHE SI VUOLE CREARE
@@ -245,7 +248,8 @@ void MainWindow::showCrea()
     stack->setCurrentWidget(itemType);
 
     // Connessioni
-    connect(stack, &QStackedWidget::currentChanged, itemType, deleteLater);
+    connect(stack, &QStackedWidget::currentChanged, itemType, [itemType]
+            { itemType->deleteLater(); });
     connect(bookButton, &QPushButton::clicked, this, [&]()
             { showTypedForm("Book"); });
     connect(gameButton, &QPushButton::clicked, this, [&]()

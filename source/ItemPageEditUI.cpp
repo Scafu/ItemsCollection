@@ -4,11 +4,15 @@
 #include "Music.h"
 #include "Collezione.h"
 #include <QMessageBox>
+#include <QApplication>
 #include <QFileDialog>
 #include <QLineEdit>
 
 ItemPageEditUI::ItemPageEditUI(QSharedPointer<AbstractItem> itemChosen, QWidget *parent) : QWidget(parent), item(itemChosen)
 {
+    QDir dir(QApplication::applicationDirPath());
+    dir.cdUp();
+
     qDebug() << "Costruttore chiamato\n";
     customFont.setPointSize(13);
 
@@ -28,7 +32,7 @@ ItemPageEditUI::ItemPageEditUI(QSharedPointer<AbstractItem> itemChosen, QWidget 
     containerLayout->addLayout(layoutAusiliare);
     QLabel *containerCover = new QLabel;
     containerCover->setFixedSize(250, 400);
-    QPixmap coverItem(item->getCoverImage());
+    QPixmap coverItem(dir.filePath(item->getCoverImage()));
     containerCover->setPixmap(coverItem);
     containerCover->setScaledContents(true);
 
