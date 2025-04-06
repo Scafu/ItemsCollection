@@ -28,6 +28,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     QStackedWidget *getPila() const;
     void updateAreaItem();
+    void updateColorButtonFilters();
 
     // Funzioni legate con la Toolbar
     void showHome();
@@ -49,6 +50,7 @@ private:
     QPushButton *gameButtonFilter;
     QPushButton *bookButtonFilter;
     QPushButton *musicButtonFilter;
+    QPushButton *allButtonFilter;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *buttonFilterLayout;
     QHBoxLayout *searchBarLayout;

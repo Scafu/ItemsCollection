@@ -153,6 +153,10 @@ QList<QSharedPointer<AbstractItem>> Collezione::getItemList() const
         return itemList;
     return itemFilteredList;
 }
+Collezione::Filters Collezione::getActiveFilter() const
+{
+    return activeFilter;
+}
 
 void Collezione::filterBooks()
 {
@@ -187,5 +191,16 @@ void Collezione::filterMusic()
             itemFilteredList.append(it);
     }
     activeFilter = MUSIC;
+    emit listFilteredDone();
+}
+
+void Collezione::filterAll()
+{
+    itemFilteredList.clear();
+    for (const auto &it : itemList)
+    {
+        itemFilteredList.append(it);
+    }
+    activeFilter = ALL;
     emit listFilteredDone();
 }

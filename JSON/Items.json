@@ -1,22 +1,95 @@
 [
     {
-        "Anno": 202523,
-        "Descrizione": "asdasdq",
-        "Genere": "Arcadeasdsasd",
-        "Immagine di Copertina": "C:/Users/aless/Desktop/library_600x900.jpg",
-        "Piattaforma": "PCasdd",
-        "Publisher": "Ubisofts",
+        "Anno": 2025,
+        "Descrizione": "Assassin's Creed Shadows è ambientato nel Giappone feudale, a partire dal 1579 durante il periodo Azuchi-Momoyama. Questa età segna la fase finale del periodo Sengoku, un'epoca di intense guerre civili in Giappone. Il gioco vede la figura storica Oda Nobunaga al culmine del suo potere dopo la sua vittoria sul clan Takeda utilizzando archibugi. Gli eventi storici fondamentali includono l'attacco di Nobunaga alla provincia di Iga nel 1581, una battaglia significativa che coinvolge la Iga ikki, conosciuta per la disciplina del ninjutsu.",
+        "Genere": "Azione",
+        "Immagine di Copertina": "assets/cover/Assassin's_creedShadows.jpg",
+        "Piattaforma": "PC",
+        "Publisher": "Ubisoft",
         "Tipo": "Game",
-        "Titolo": "Assassin's Creedasdasdasd"
+        "Titolo": "Assassin's Creed Shadows"
     },
     {
-        "Anno": 123,
-        "Descrizione": "",
-        "Genere": "",
-        "Immagine di Copertina": "C:/Users/aless/Desktop/library_600x900.jpg",
-        "Piattaforma": "",
-        "Publisher": "",
+        "Anno": 2020,
+        "Descrizione": "Il/la protagonista è Eivor Varinsson / Varinsdottír, guerriero/a norreno che prese parte alle invasioni dell'Inghilterra nel IX secolo, quando il Paese era diviso in più regni (Northumbria, Mercia, Anglia orientale e Wessex).[5], Quest'ultimo, governato dall'allora monarca Alfredo il Grande, dovette combattere a lungo contro la Grande armata danese, una coalizione di guerrieri norreni.[5][6] Durante l'avventura, Eivor entrerà in contatto con gli Occulti e si unirà alla lotta contro l'Ordine degli Antichi.[7] La storia ha inizio in Norvegia, ma in una fase successiva il protagonista si sposterà in Inghilterra e, tra le città esplorabili, rientrano Winchester, Londra e Jórvík (l'attuale York).[7][8] Come in Origins e in Odyssey, è presente una storia che segue le gesta di Layla Hassan nel presente, suddivise in vere e proprie sequenze di gioco. Valhalla contiene alcuni elementi narrativi riguardo all'origine degli Isu, una civiltà avanzata che precede l'umanità.",
+        "Genere": "Azione",
+        "Immagine di Copertina": "assets/cover/Assassin's_creed_Valhalla.jpg",
+        "Piattaforma": "PS4",
+        "Publisher": "Ubisoft",
         "Tipo": "Game",
-        "Titolo": "asd"
+        "Titolo": "Assassin's Creed Valhalla"
+    },
+    {
+        "Anno": 2010,
+        "Descrizione": "Il gioco è ambientato durante la Guerra Fredda, tra gli anni '60 e '70, e si concentra su una serie di operazioni segrete, missioni di spionaggio e guerre psicologiche. La trama segue Alex Mason, un soldato delle forze speciali degli Stati Uniti, che si ritrova coinvolto in una serie di eventi misteriosi e pericolosi legati ad esperimenti sovietici e armi biologiche.La campagna include vari scenari in tutto il mondo, da Cuba alla Vietnam, alla Russia, e si caratterizza per colpi di scena e l'uso di scenari e situazioni estremamente tesi e realistiche.",
+        "Genere": "Azione",
+        "Immagine di Copertina": "assets/cover/Call_of_Duty_Black_Ops.jpg",
+        "Piattaforma": "PS3",
+        "Publisher": "Activision",
+        "Tipo": "Game",
+        "Titolo": "Call of Duty Black Ops"
+    },
+    {
+        "Anno": 2003,
+        "Autore": "Elisabetta Dami",
+        "Descrizione": "Geronimo Stilton torna a casa dopo una dura giornata di lavoro, ma appena entra scopre che la corrente non funziona. Andato in soffitta a prendere un candelabro, inciampa e sviene. Al suo risveglio trova un carillon con incastonate sette pietre preziose e dentro una pergamena scritta in fantasico, una lingua in simboli sconosciuta, e una chiave. Attraverso una scala di polvere d'oro che appare fuori dalla sua finestra, Geronimo sale fino ad una porta d'oro e la apre con la chiave. Al di là trova il ranocchio Scribacchius che traduce il fantasico: la pergamena è una richiesta d'aiuto di Floridiana del Flor, la regina del regno delle fate, che è stato quasi distrutto da Stria, la regina del regno delle streghe e Geronimo scopre di trovarsi nel regno della fantasia.",
+        "Immagine di Copertina": "assets/cover/Geronimo_Stilton1.jpg",
+        "Lingua": "Italiano",
+        "Numero di Capitoli": 9,
+        "Numero di Pagine": 311,
+        "Tipo": "Book",
+        "Titolo": "Geronimo Stilton nel Regno della Fantasia"
+    },
+    {
+        "Anno": 2009,
+        "Autore": "Oliver Bowden",
+        "Descrizione": "Nel 1476 Lorenzo de' Medici è al governo di Firenze e con la sua presenza ha portato ordine e pace tra le famiglie della città toscana; tuttavia, delle piccole battaglie continuano a scatenarsi. Ezio Auditore, figlio del banchiere Giovanni Auditore, vive nella sua spensieratezza fino a quando la famiglia, eccetto madre e sorella, viene giustiziata dal gonfaloniere di giustizia Uberto Alberti. Da quel giorno, Ezio vivrà uccidendo tutti i Templari implicati nell'omicidio del padre fino ad arrivare a Roma, dove scoprirà una Cripta all'interno delle Grotte Vaticane nella quale vivono gli Dei.",
+        "Immagine di Copertina": "assets/cover/Assassin's_creed_Rinascimento.jpg",
+        "Lingua": "Italiano",
+        "Numero di Capitoli": 14,
+        "Numero di Pagine": 405,
+        "Tipo": "Book",
+        "Titolo": "Assassin's Creed: Rinascimento"
+    },
+    {
+        "Anno": 2008,
+        "Autore": "Jeff Kinney",
+        "Descrizione": "Diario di una schiappa è una serie di libri per ragazzi scritta dall'autore e fumettista Jeff Kinney. Tutti i libri principali sono strutturati come diari del personaggio principale, Greg Heffley, e sono composti da vignette rappresentati le avventure quotidiane di Greg.",
+        "Immagine di Copertina": "assets/cover/Diario_di_una_schiappa.jpg",
+        "Lingua": "Italiano",
+        "Numero di Capitoli": 9,
+        "Numero di Pagine": 311,
+        "Tipo": "Book",
+        "Titolo": "Diario di una schiappa - Fai da te"
+    },
+    {
+        "Album": "Guesus",
+        "Anno": 2021,
+        "Artista": "Gué Pequeno",
+        "Band": "",
+        "Descrizione": "Tommaso Naccari di GQ Italia scrive che si tratta di «un disco in cui vieni sballottato da una parte all’altra del mondo dell'autore» e «introspettivo», soffermandosi sulla traccia Nicolas Cage, ritenuta dal giornalista «la gemma nascosta» de progetto, «inedita a livello di tecnica, flow e scelte stilistiche» e che «mischia il classico con l'attuale».[10] Claudio Cabona di Rockol descrive il progetto come «denso dal punto di vista sonoro» con riferimenti musicali «dall'R&B, al valzer, dal grime all'hip hop vecchia scuola passando anche per sonorità oniriche, contemporanee o più scarne», e sebbene non presenti nel complesso «elementi realmente sorprendenti o di novità» esso «offre un’iniezione positiva al rap italiano».",
+        "Immagine di Copertina": "assets/cover/Gue'_Pequeno.jpg",
+        "Tipo": "Music",
+        "Titolo": "Veleno"
+    },
+    {
+        "Album": "Stoney",
+        "Anno": 2016,
+        "Artista": "Post Malone",
+        "Band": "",
+        "Descrizione": "L'album riesce a coniugare vari generi fra le sue tracce. Fra questi si possono facilmente distinguere tratti pop, hip hop, contemporary R&B e country (come ad esempio nel singolo Go Flex), più altri lavori chiaramente di stampo cloud rap.",
+        "Immagine di Copertina": "assets/cover/Post_Malone.jpeg",
+        "Tipo": "Music",
+        "Titolo": "I Fall Apart"
+    },
+    {
+        "Album": "The First Time",
+        "Anno": 2021,
+        "Artista": "The Kid Laroi",
+        "Band": "",
+        "Descrizione": "The First Time è l'album di debutto in studio del rapper e cantante australiano Kid Laroi . È stato pubblicato il 10 novembre 2023 tramite Columbia , con l'edizione deluxe pubblicata il 9 agosto 2024. L'album contiene apparizioni come ospiti di Jungkook , Central Cee , Future , BabyDrill, YoungBoy Never Broke Again , Robert Glasper e D4vd . L'edizione deluxe aggiunge un'ulteriore apparizione come ospite di Lil Yachty . La produzione è stata gestita da FnZ , Parisi , Omer Fedi , Blake Slatkin , Bnyx , F1lthy , Emile Haynie , Clams Casino , Michael Uzowuru , Shellback , Cirkut , Louis Bell e Mk.gee , tra gli altri.",
+        "Immagine di Copertina": "assets/cover/The_Kid_Laroi.png",
+        "Tipo": "Music",
+        "Titolo": "Love Again"
     }
 ]

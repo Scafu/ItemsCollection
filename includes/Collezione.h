@@ -38,6 +38,7 @@ public:
     void editItem(QSharedPointer<AbstractItem> newItem, QMap<QString, QVariant> &fieldToEdit);
     void searchTitle(const QString &title);
     QList<QSharedPointer<AbstractItem>> getItemList() const;
+    Filters getActiveFilter() const;
 
     // Funzioni JSON
     void toFileJSON(const QString &filePath) const;
@@ -47,6 +48,7 @@ public slots:
     void filterBooks();
     void filterGames();
     void filterMusic();
+    void filterAll();
 signals:
     void listFilteredDone();
 

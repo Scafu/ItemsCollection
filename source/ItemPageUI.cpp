@@ -1,5 +1,6 @@
 #include "ItemPageUI.h"
 #include <QFileDialog>
+#include <QApplication>
 #include "Game.h"
 #include "Book.h"
 #include "Music.h"
@@ -10,6 +11,9 @@
 
 ItemPageUI::ItemPageUI(QSharedPointer<AbstractItem> itemChosen, QWidget *parent) : QWidget(parent), item(itemChosen)
 {
+    QDir dir(QApplication::applicationDirPath());
+    dir.cdUp();
+
     customFont.setPointSize(13);
 
     customSizePolicy = new QSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
@@ -28,7 +32,7 @@ ItemPageUI::ItemPageUI(QSharedPointer<AbstractItem> itemChosen, QWidget *parent)
     containerLayout->addLayout(layoutAusiliare);
     QLabel *containerCover = new QLabel;
     containerCover->setFixedSize(250, 400);
-    QPixmap coverItem(item->getCoverImage());
+    QPixmap coverItem(dir.filePath(item->getCoverImage()));
     containerCover->setPixmap(coverItem);
     containerCover->setScaledContents(true);
 

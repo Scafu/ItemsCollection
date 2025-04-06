@@ -1,4 +1,6 @@
 #include "ItemWidgetUI.h"
+#include <QApplication>
+#include <QDir>
 
 ItemWidgetUI::ItemWidgetUI(QSharedPointer<AbstractItem> item, QWidget *parent) : QWidget(parent), item(item)
 {
@@ -25,7 +27,11 @@ ItemWidgetUI::ItemWidgetUI(QSharedPointer<AbstractItem> item, QWidget *parent) :
 
     itemTitle = new QLabel(customFontMetrics.elidedText(item->getTitle(), Qt::ElideRight, 180));
     itemTitle->setAlignment(Qt::AlignCenter);
-    coverImage = new QPixmap(item->getCoverImage());
+
+    QDir dir(QApplication::applicationDirPath());
+    dir.cdUp();
+    coverImage = new QPixmap(dir.filePath(item->getCoverImage()));
+
     containerCover->setPixmap(*coverImage);
     containerCover->setScaledContents(true);
     widgetLayout->addWidget(containerCover);

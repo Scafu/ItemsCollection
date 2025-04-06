@@ -14,7 +14,7 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
     setWindowTitle("Collezione di Oggetti");
-    setWindowIcon(QIcon(":/assets/database.png"));
+    setWindowIcon(QIcon(":/assets/icon/database.png"));
     resize(1024, 768); // per avere almeno un 4:3
 
     stack = new QStackedWidget(this);
@@ -38,6 +38,7 @@ void MainWindow::showHome()
 {
     if (!homePage) // se non è stata creata in precedenza
     {
+
         customFont.setPointSize(12);
 
         homePage = new QWidget(this);
@@ -48,19 +49,22 @@ void MainWindow::showHome()
         // Pulsanti dei filtri
         buttonFilterLayout = new QHBoxLayout;
         buttonFilterLayout->setAlignment(Qt::AlignHCenter);
-        gameButtonFilter = new QPushButton("Games");
+        gameButtonFilter = new QPushButton("Giochi");
         gameButtonFilter->setFont(customFont);
         gameButtonFilter->setFixedSize(200, 30);
-        bookButtonFilter = new QPushButton("Books");
+        bookButtonFilter = new QPushButton("Libri");
         bookButtonFilter->setFont(customFont);
         bookButtonFilter->setFixedSize(200, 30);
-        musicButtonFilter = new QPushButton("Music");
+        musicButtonFilter = new QPushButton("Musica");
         musicButtonFilter->setFont(customFont);
         musicButtonFilter->setFixedSize(200, 30);
+        allButtonFilter = new QPushButton("Tutti");
+        allButtonFilter->setFont(customFont);
+        allButtonFilter->setFixedSize(200, 30);
         buttonFilterLayout->addWidget(gameButtonFilter);
         buttonFilterLayout->addWidget(bookButtonFilter);
         buttonFilterLayout->addWidget(musicButtonFilter);
-
+        buttonFilterLayout->addWidget(allButtonFilter);
         // Barra di ricerca
         searchBarLayout = new QHBoxLayout;
         QLabel *label = new QLabel("Cerca un Titolo");
@@ -69,12 +73,13 @@ void MainWindow::showHome()
         searchBar->setFont(customFont);
         searchBar->setFixedSize(900, 30);
         searchBarLayout->addWidget(label);
-        searchBarLayout->addSpacerItem(new QSpacerItem(25, 0));
-        searchBarLayout->addWidget(searchBar, 0, Qt::AlignHCenter);
-        searchBarLayout->setAlignment(Qt::AlignHCenter);
+        searchBarLayout->addWidget(searchBar, 0, Qt::AlignCenter);
+        searchBarLayout->addSpacerItem(new QSpacerItem(20, 0));
+        searchBarLayout->setAlignment(Qt::AlignCenter);
 
         QVBoxLayout *layoutRicerca = new QVBoxLayout;
         layoutRicerca->addLayout(buttonFilterLayout);
+        layoutRicerca->addSpacerItem(new QSpacerItem(0, 40));
         layoutRicerca->addLayout(searchBarLayout);
 
         // Scritta centrale e Area Items
@@ -91,21 +96,62 @@ void MainWindow::showHome()
         homeLayout->addWidget(itemsArea, 0, Qt::AlignCenter);
 
         stack->addWidget(homePage);
-        updateAreaItem();
         stack->setCurrentWidget(homePage);
+        updateAreaItem();
 
         // Connessioni
-        connect(bookButtonFilter, &QPushButton::clicked, &Collezione::getCollezione(), &Collezione::filterBooks);
-        connect(gameButtonFilter, &QPushButton::clicked, &Collezione::getCollezione(), &Collezione::filterGames);
-        connect(musicButtonFilter, &QPushButton::clicked, &Collezione::getCollezione(), &Collezione::filterMusic);
+        connect(bookButtonFilter, &QPushButton::clicked, &Collezione::getCollezione(), [this]()
+                {
+    Collezione::getCollezione().filterBooks(); updateColorButtonFilters(); });
+        connect(gameButtonFilter, &QPushButton::clicked, &Collezione::getCollezione(), [this]()
+                {
+    Collezione::getCollezione().filterGames(); updateColorButtonFilters(); });
+        connect(musicButtonFilter, &QPushButton::clicked, &Collezione::getCollezione(), [this]()
+                {
+    Collezione::getCollezione().filterMusic(); updateColorButtonFilters(); });
+        connect(allButtonFilter, &QPushButton::clicked, &Collezione::getCollezione(), [this]()
+                {
+            Collezione::getCollezione().filterAll(); updateColorButtonFilters(); });
         connect(&Collezione::getCollezione(), &Collezione::listFilteredDone, this, &MainWindow::updateAreaItem);
         connect(searchBar, &QLineEdit::textChanged, this, [](const QString &text)
                 { Collezione::getCollezione().searchTitle(text); });
+
+        updateColorButtonFilters();
     }
     else
     {
         updateAreaItem();
         stack->setCurrentWidget(homePage);
+    }
+}
+
+void MainWindow::updateColorButtonFilters()
+{
+    allButtonFilter->setStyleSheet("");
+    bookButtonFilter->setStyleSheet("");
+    gameButtonFilter->setStyleSheet("");
+    musicButtonFilter->setStyleSheet("");
+
+    switch (Collezione::getCollezione().getActiveFilter())
+    {
+    case Collezione::ALL:
+        allButtonFilter->setStyleSheet("background-color: rgb(0, 127, 247)");
+        break;
+
+    case Collezione::BOOKS:
+        bookButtonFilter->setStyleSheet("background-color: rgb(0, 127, 247)");
+        break;
+
+    case Collezione::GAMES:
+        gameButtonFilter->setStyleSheet("background-color: rgb(0, 127, 247)");
+        break;
+
+    case Collezione::MUSIC:
+        musicButtonFilter->setStyleSheet("background-color: rgb(0, 127, 247)");
+        break;
+
+    default:
+        break;
     }
 }
 
