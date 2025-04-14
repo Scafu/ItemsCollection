@@ -8,7 +8,7 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    qDebug() << "percorso del file" << QApplication::applicationDirPath() + "../JSON/Items.json";
+    qDebug() << "percorso del file" << QApplication::applicationDirPath() + "/../JSON/Items.json";
     Collezione::getCollezione().fromFileJSON(QApplication::applicationDirPath() + "/../JSON/Items.json");
     MainWindow MainWindow;
     MainWindow.show();

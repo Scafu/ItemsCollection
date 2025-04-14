@@ -30,6 +30,7 @@ ItemWidgetUI::ItemWidgetUI(QSharedPointer<AbstractItem> item, QWidget *parent) :
 
     QDir dir(QApplication::applicationDirPath());
     dir.cdUp();
+    qDebug() << dir.filePath(item->getCoverImage());
     coverImage = new QPixmap(dir.filePath(item->getCoverImage()));
 
     containerCover->setPixmap(*coverImage);
