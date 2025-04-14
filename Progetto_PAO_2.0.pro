@@ -6,6 +6,7 @@ TEMPLATE = app
 TARGET = Progetto_PAO_2.0
 INCLUDEPATH += ./includes
 CONFIG += console
+DESTDIR = release
 QT += core gui widgets
 
 # You can make your code fail to compile if you use deprecated APIs.
