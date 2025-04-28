@@ -34,7 +34,7 @@ public:
 
     // Funzioni di servizio per gli item
     void addItem(QSharedPointer<AbstractItem> newItem);
-    void removeItem(QSharedPointer<AbstractItem> newItem);
+    void removeItem(QSharedPointer<AbstractItem> itemToDelete);
     void editItem(QSharedPointer<AbstractItem> newItem, QMap<QString, QVariant> &fieldToEdit);
     void searchTitle(const QString &title);
     QList<QSharedPointer<AbstractItem>> getItemList() const;
