@@ -28,7 +28,6 @@ public:
 
     // Funzioni di servizio
     void clearFields() override;
-    static QSharedPointer<AbstractItem> createDerivedItem(const QString &typeChosen);
 
     // Funzioni di visitor
     void accept(FormVisitor &Visitor) override;
