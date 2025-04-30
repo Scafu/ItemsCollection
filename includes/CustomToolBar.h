@@ -5,6 +5,7 @@
 #define CUSTOMTOOLBAR_H
 
 #include "MainWindow.h"
+#include "Collezione.h"
 #include <QToolBar>
 #include <QPushButton>
 
@@ -19,6 +20,7 @@ private:
     QPushButton *home;
     QPushButton *about;
     QPushButton *crea;
+    QPushButton *collezione;
     QPushButton *exit;
     MainWindow *mainWindow;
     QWidget *itemType;

@@ -15,8 +15,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
     setWindowTitle("Collezione di Oggetti");
     setWindowIcon(QIcon(":/assets/icon/database.png"));
-    resize(1024, 768); // per avere almeno un 4:3
-
     stack = new QStackedWidget(this);
     toolBar = new CustomToolBar(this);
     addToolBar(toolBar);
@@ -65,6 +63,7 @@ void MainWindow::showHome()
         buttonFilterLayout->addWidget(bookButtonFilter);
         buttonFilterLayout->addWidget(musicButtonFilter);
         buttonFilterLayout->addWidget(allButtonFilter);
+
         // Barra di ricerca
         searchBarLayout = new QHBoxLayout;
         QLabel *label = new QLabel("Cerca un Titolo");
@@ -76,23 +75,29 @@ void MainWindow::showHome()
         searchBarLayout->addWidget(searchBar, 0, Qt::AlignCenter);
         searchBarLayout->addSpacerItem(new QSpacerItem(20, 0));
         searchBarLayout->setAlignment(Qt::AlignCenter);
-
         QVBoxLayout *layoutRicerca = new QVBoxLayout;
         layoutRicerca->addLayout(buttonFilterLayout);
         layoutRicerca->addSpacerItem(new QSpacerItem(0, 40));
         layoutRicerca->addLayout(searchBarLayout);
 
         // Scritta centrale e Area Items
+        QHBoxLayout *collezioneAction = new QHBoxLayout;
+        collezioneAction->setAlignment(Qt::AlignCenter);
         QLabel *collezioneLabel = new QLabel("La Tua Collezione");
         customFont.setPointSize(20);
         collezioneLabel->setFont(customFont);
+        QPushButton *saveCollection = new QPushButton("Salva");
+        QPushButton *restoreDefault = new QPushButton("Ripristina");
+        collezioneAction->addWidget(collezioneLabel);
+        collezioneAction->addWidget(saveCollection);
+        collezioneAction->addWidget(restoreDefault);
         itemsArea = new QScrollArea;
         itemsArea->setWidgetResizable(true);
         itemsArea->setFixedSize(1000, 800);
 
         homeLayout->addLayout(layoutRicerca);
         homeLayout->addSpacerItem(new QSpacerItem(0, 50));
-        homeLayout->addWidget(collezioneLabel, 0, Qt::AlignHCenter);
+        homeLayout->addLayout(collezioneAction);
         homeLayout->addWidget(itemsArea, 0, Qt::AlignCenter);
 
         stack->addWidget(homePage);
@@ -102,20 +107,22 @@ void MainWindow::showHome()
         // Connessioni
         connect(bookButtonFilter, &QPushButton::clicked, &Collezione::getCollezione(), [this]()
                 {
-    Collezione::getCollezione().filterBooks(); updateColorButtonFilters(); });
+                    Collezione::getCollezione().filterBooks(); updateColorButtonFilters(); });
         connect(gameButtonFilter, &QPushButton::clicked, &Collezione::getCollezione(), [this]()
                 {
-    Collezione::getCollezione().filterGames(); updateColorButtonFilters(); });
+                    Collezione::getCollezione().filterGames(); updateColorButtonFilters(); });
         connect(musicButtonFilter, &QPushButton::clicked, &Collezione::getCollezione(), [this]()
                 {
-    Collezione::getCollezione().filterMusic(); updateColorButtonFilters(); });
+                    Collezione::getCollezione().filterMusic(); updateColorButtonFilters(); });
         connect(allButtonFilter, &QPushButton::clicked, &Collezione::getCollezione(), [this]()
                 {
-            Collezione::getCollezione().filterAll(); updateColorButtonFilters(); });
+                    Collezione::getCollezione().filterAll(); updateColorButtonFilters(); });
         connect(&Collezione::getCollezione(), &Collezione::listFilteredDone, this, &MainWindow::updateAreaItem);
         connect(searchBar, &QLineEdit::textChanged, this, [](const QString &text)
                 { Collezione::getCollezione().searchTitle(text); });
-
+        connect(saveCollection, &QPushButton::clicked, &Collezione::getCollezione(), &Collezione::saveCollection);
+        connect(restoreDefault, &QPushButton::clicked, &Collezione::getCollezione(), &Collezione::restoreDefault);
+        connect(&Collezione::getCollezione(), &Collezione::collectionLoaded, this, &MainWindow::updateAreaItem);
         updateColorButtonFilters();
     }
     else
@@ -270,14 +277,14 @@ void MainWindow::showTypedForm(const QString &typeChosen)
     // Creazione dell'item vuoto contenitore e del relativo FORM per il riempimento
     QSharedPointer<AbstractItem> itemCreato = ItemCreationForm::createDerivedItem(typeChosen);
     if (!itemCreato)
-        qDebug() << "itemCreato vuoto";
+        return;
 
     VisitorCreateForm visitorCreate(itemCreato);
     itemCreato->accept(visitorCreate);
 
     QSharedPointer<ItemCreationForm> formWidget = visitorCreate.getFormItem();
     if (!formWidget)
-        qDebug() << "formItem vuoto";
+        return;
 
     stack->addWidget(container);
     stack->setCurrentWidget(container);
@@ -303,9 +310,7 @@ void MainWindow::showTypedForm(const QString &typeChosen)
     formWidget->accept(visitorRead);
     itemCreato = visitorRead.getCompleteItem();
     if (!itemCreato)
-    {
-        qDebug() << "Ciao";
-    }
+        return;
 
     VisitorReadItem *visitorReadItem = new VisitorReadItem;
     itemCreato->accept(*visitorReadItem);

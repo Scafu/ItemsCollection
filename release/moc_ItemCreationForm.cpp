@@ -41,8 +41,7 @@ static constexpr auto qt_meta_stringdata_ZN16ItemCreationFormE = QtMocHelpers::s
     "ItemCreationForm",
     "createItem",
     "",
-    "deleteCreation",
-    "createItemCheck"
+    "deleteCreation"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -54,7 +53,7 @@ Q_CONSTINIT static const uint qt_meta_data_ZN16ItemCreationFormE[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -62,17 +61,11 @@ Q_CONSTINIT static const uint qt_meta_data_ZN16ItemCreationFormE[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   32,    2, 0x06,    1 /* Public */,
-       3,    0,   33,    2, 0x06,    2 /* Public */,
-
- // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       4,    0,   34,    2, 0x0a,    3 /* Public */,
+       1,    0,   26,    2, 0x06,    1 /* Public */,
+       3,    0,   27,    2, 0x06,    2 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
-    QMetaType::Void,
-
- // slots: parameters
     QMetaType::Void,
 
        0        // eod
@@ -90,8 +83,6 @@ Q_CONSTINIT const QMetaObject ItemCreationForm::staticMetaObject = { {
         // method 'createItem'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'deleteCreation'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'createItemCheck'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -104,7 +95,6 @@ void ItemCreationForm::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         switch (_id) {
         case 0: _t->createItem(); break;
         case 1: _t->deleteCreation(); break;
-        case 2: _t->createItemCheck(); break;
         default: ;
         }
     }
@@ -146,14 +136,14 @@ int ItemCreationForm::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 2;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 2)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 2;
     }
     return _id;
 }

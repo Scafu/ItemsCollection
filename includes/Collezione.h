@@ -49,14 +49,19 @@ public slots:
     void filterGames();
     void filterMusic();
     void filterAll();
+    void collectionFromFile(); // permette il caricamento del file Items.json dall'utente
+    void saveCollection();     // salva il file Items.json inserito dall'utente
+    void restoreDefault();     // ripristina la versione di Default del programma
+
 signals:
+    void collectionLoaded();
     void listFilteredDone();
 
 private:
     Collezione() : activeFilter(ALL) {}
     QList<QSharedPointer<AbstractItem>> itemList;
     QList<QSharedPointer<AbstractItem>> itemFilteredList;
-
+    QString collectionFileLoaded;
     Filters activeFilter;
 };
 

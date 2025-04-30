@@ -11,9 +11,9 @@ MusicCreationForm::MusicCreationForm(QWidget *parent) : ItemCreationForm(parent)
     formLayout->addRow("Album", albumInput);
 }
 
-QString MusicCreationForm::getArtist() const { return artistInput->text(); }
-QString MusicCreationForm::getBand() const { return bandInput->text(); }
-QString MusicCreationForm::getAlbum() const { return albumInput->text(); }
+QString MusicCreationForm::getArtist() const { return artistInput->text().trimmed().isEmpty() ? "Non disponibile" : artistInput->text(); }
+QString MusicCreationForm::getBand() const { return bandInput->text().trimmed().isEmpty() ? "Non disponibile" : bandInput->text(); }
+QString MusicCreationForm::getAlbum() const { return albumInput->text().trimmed().isEmpty() ? "Non disponibile" : albumInput->text(); }
 QMap<QString, QVariant> MusicCreationForm::getNotDefaultFields() const
 {
     QMap<QString, QVariant> fieldToRead;

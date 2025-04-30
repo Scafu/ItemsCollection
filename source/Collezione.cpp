@@ -4,6 +4,8 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QFileDialog>
+#include <QMessageBox>
 #include "Collezione.h"
 #include "Book.h"
 #include "Game.h"
@@ -40,7 +42,6 @@ void Collezione::editItem(QSharedPointer<AbstractItem> newItem, QMap<QString, QV
             editedGame->setPublisher(fieldToEdit.value("Publisher", QVariant(editedGame->getPublisher())).toString());
             editedGame->setPlatform(fieldToEdit.value("Piattaforma", QVariant(editedGame->getPlatform())).toString());
             editedGame->setGenre(fieldToEdit.value("Genere", QVariant(editedGame->getGenre())).toString());
-            qDebug() << editedGame->getPublisher();
         }
         auto editedMusic = qSharedPointerDynamicCast<Music>(it);
         if (editedMusic && editedMusic->getTitle() == newItem->getTitle())
@@ -81,6 +82,17 @@ void Collezione::searchTitle(const QString &title)
             itemFilteredList.append(it);
     }
     emit listFilteredDone();
+}
+
+QList<QSharedPointer<AbstractItem>> Collezione::getItemList() const
+{
+    if (activeFilter == ALL && itemFilteredList.isEmpty())
+        return itemList;
+    return itemFilteredList;
+}
+Collezione::Filters Collezione::getActiveFilter() const
+{
+    return activeFilter;
 }
 
 void Collezione::toFileJSON(const QString &filePath) const
@@ -147,17 +159,6 @@ void Collezione::fromFileJSON(const QString &filePath)
     return;
 }
 
-QList<QSharedPointer<AbstractItem>> Collezione::getItemList() const
-{
-    if (activeFilter == ALL && itemFilteredList.isEmpty())
-        return itemList;
-    return itemFilteredList;
-}
-Collezione::Filters Collezione::getActiveFilter() const
-{
-    return activeFilter;
-}
-
 void Collezione::filterBooks()
 {
     itemFilteredList.clear();
@@ -203,4 +204,55 @@ void Collezione::filterAll()
     }
     activeFilter = ALL;
     emit listFilteredDone();
+}
+
+void Collezione::collectionFromFile()
+{
+    collectionFileLoaded = QFileDialog::getOpenFileName(nullptr, "Seleziona la collezione che vuoi mostrare", "", "Items (*.json)");
+    if (collectionFileLoaded.isEmpty())
+        return;
+    fromFileJSON(collectionFileLoaded);
+    emit collectionLoaded();
+}
+
+void Collezione::saveCollection()
+{
+    QString fileDaSostituire = QApplication::applicationDirPath() + "/../JSON/Items.json";
+    QString destinationPath = QApplication::applicationDirPath() + "/../JSON/";
+    if (collectionFileLoaded.isEmpty())
+        return;
+
+    if (QFile::exists(fileDaSostituire))
+        QFile::remove(fileDaSostituire);
+
+    else
+        QFile::copy(collectionFileLoaded, destinationPath);
+
+    if (!QFile::copy(collectionFileLoaded, fileDaSostituire))
+        QMessageBox::warning(nullptr, "Errore", "Impossibile sostituire il file scelto");
+}
+
+void Collezione::restoreDefault()
+{
+    auto risposta = QMessageBox::question(nullptr, "Ripristino", "Sei sicuro di voler annullare ripristinare la collezione di Default?", QMessageBox::Yes | QMessageBox::No);
+    if (risposta == QMessageBox::No)
+        return;
+
+    collectionFileLoaded = QApplication::applicationDirPath() + "/../JSON/default/Items.json";
+    QString fileDaSostituire = QApplication::applicationDirPath() + "/../JSON/Items.json";
+    QString destinationPath = QApplication::applicationDirPath() + "/../JSON/";
+    if (collectionFileLoaded.isEmpty())
+        return;
+
+    if (QFile::exists(fileDaSostituire))
+        QFile::remove(fileDaSostituire);
+
+    else
+        QFile::copy(collectionFileLoaded, destinationPath);
+
+    if (!QFile::copy(collectionFileLoaded, fileDaSostituire))
+        QMessageBox::warning(nullptr, "Errore", "Impossibile sostituire il file scelto");
+
+    fromFileJSON(collectionFileLoaded);
+    emit collectionLoaded();
 }

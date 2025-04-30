@@ -38,12 +38,16 @@ struct qt_meta_tag_ZN10CollezioneE_t {};
 #ifdef QT_MOC_HAS_STRINGDATA
 static constexpr auto qt_meta_stringdata_ZN10CollezioneE = QtMocHelpers::stringData(
     "Collezione",
-    "listFilteredDone",
+    "collectionLoaded",
     "",
+    "listFilteredDone",
     "filterBooks",
     "filterGames",
     "filterMusic",
-    "filterAll"
+    "filterAll",
+    "collectionFromFile",
+    "saveCollection",
+    "restoreDefault"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -55,26 +59,34 @@ Q_CONSTINIT static const uint qt_meta_data_ZN10CollezioneE[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   44,    2, 0x06,    1 /* Public */,
+       1,    0,   68,    2, 0x06,    1 /* Public */,
+       3,    0,   69,    2, 0x06,    2 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       3,    0,   45,    2, 0x0a,    2 /* Public */,
-       4,    0,   46,    2, 0x0a,    3 /* Public */,
-       5,    0,   47,    2, 0x0a,    4 /* Public */,
-       6,    0,   48,    2, 0x0a,    5 /* Public */,
+       4,    0,   70,    2, 0x0a,    3 /* Public */,
+       5,    0,   71,    2, 0x0a,    4 /* Public */,
+       6,    0,   72,    2, 0x0a,    5 /* Public */,
+       7,    0,   73,    2, 0x0a,    6 /* Public */,
+       8,    0,   74,    2, 0x0a,    7 /* Public */,
+       9,    0,   75,    2, 0x0a,    8 /* Public */,
+      10,    0,   76,    2, 0x0a,    9 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
+    QMetaType::Void,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -92,6 +104,8 @@ Q_CONSTINIT const QMetaObject Collezione::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_tag_ZN10CollezioneE_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<Collezione, std::true_type>,
+        // method 'collectionLoaded'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'listFilteredDone'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'filterBooks'
@@ -101,6 +115,12 @@ Q_CONSTINIT const QMetaObject Collezione::staticMetaObject = { {
         // method 'filterMusic'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'filterAll'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'collectionFromFile'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'saveCollection'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'restoreDefault'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -111,11 +131,15 @@ void Collezione::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     auto *_t = static_cast<Collezione *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->listFilteredDone(); break;
-        case 1: _t->filterBooks(); break;
-        case 2: _t->filterGames(); break;
-        case 3: _t->filterMusic(); break;
-        case 4: _t->filterAll(); break;
+        case 0: _t->collectionLoaded(); break;
+        case 1: _t->listFilteredDone(); break;
+        case 2: _t->filterBooks(); break;
+        case 3: _t->filterGames(); break;
+        case 4: _t->filterMusic(); break;
+        case 5: _t->filterAll(); break;
+        case 6: _t->collectionFromFile(); break;
+        case 7: _t->saveCollection(); break;
+        case 8: _t->restoreDefault(); break;
         default: ;
         }
     }
@@ -123,8 +147,15 @@ void Collezione::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             using _q_method_type = void (Collezione::*)();
-            if (_q_method_type _q_method = &Collezione::listFilteredDone; *reinterpret_cast<_q_method_type *>(_a[1]) == _q_method) {
+            if (_q_method_type _q_method = &Collezione::collectionLoaded; *reinterpret_cast<_q_method_type *>(_a[1]) == _q_method) {
                 *result = 0;
+                return;
+            }
+        }
+        {
+            using _q_method_type = void (Collezione::*)();
+            if (_q_method_type _q_method = &Collezione::listFilteredDone; *reinterpret_cast<_q_method_type *>(_a[1]) == _q_method) {
+                *result = 1;
                 return;
             }
         }
@@ -150,21 +181,27 @@ int Collezione::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 9;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 9)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 5;
+        _id -= 9;
     }
     return _id;
 }
 
 // SIGNAL 0
-void Collezione::listFilteredDone()
+void Collezione::collectionLoaded()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+}
+
+// SIGNAL 1
+void Collezione::listFilteredDone()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 QT_WARNING_POP

@@ -1,5 +1,5 @@
 #include "BookCreationForm.h"
-
+#include <QMessageBox>
 BookCreationForm::BookCreationForm(QWidget *parent) : ItemCreationForm(parent)
 {
     authorInput = new QLineEdit();
@@ -13,9 +13,12 @@ BookCreationForm::BookCreationForm(QWidget *parent) : ItemCreationForm(parent)
     formLayout->addRow("Numero di Capitoli", numChaptersInput);
 }
 
-QString BookCreationForm::getAuthor() const { return authorInput->text(); }
-QString BookCreationForm::getLanguage() const { return languageInput->text(); }
-int BookCreationForm::getNumPages() const { return numPagesInput->text().toInt(); }
+QString BookCreationForm::getAuthor() const { return authorInput->text().trimmed().isEmpty() ? "Non disponibile" : authorInput->text(); }
+QString BookCreationForm::getLanguage() const { return languageInput->text().trimmed().isEmpty() ? "Non disponibile" : languageInput->text(); }
+int BookCreationForm::getNumPages() const
+{
+    return numPagesInput->text().toInt();
+}
 int BookCreationForm::getNumChapters() const { return numChaptersInput->text().toInt(); }
 QMap<QString, QVariant> BookCreationForm::getNotDefaultFields() const
 {
@@ -63,4 +66,20 @@ void BookCreationForm::accept(FormVisitor &visitor)
 void BookCreationForm::accept(FormConstVisitor &constVisitor) const
 {
     constVisitor.visitBookForm(*this);
+}
+
+bool BookCreationForm::isDataValid()
+{
+    bool isInt;
+    if (numPagesInput->text().toInt(&isInt) <= 0 || !isInt)
+    {
+        QMessageBox::warning(this, "Errore", "Il numero di pagine deve essere in formato numerico e maggiore di 0");
+        return false;
+    }
+    if (numChaptersInput->text().toInt(&isInt) <= 0 || !isInt)
+    {
+        QMessageBox::warning(this, "Errore", "Il numero di capitoli deve essere in formato numerico e maggiore di 0");
+        return false;
+    }
+    return true;
 }

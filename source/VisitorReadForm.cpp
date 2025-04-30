@@ -10,11 +10,10 @@ VisitorReadForm::VisitorReadForm(ItemCreationForm *form) : form(form) {}
 
 QSharedPointer<AbstractItem> VisitorReadForm::getCompleteItem()
 {
-    qDebug() << "Item";
     return item;
 }
 
-void VisitorReadForm::visitBookForm(BookCreationForm &bookForm)
+void VisitorReadForm::visitBookForm(const BookCreationForm &bookForm)
 {
     Book *emptyBook = new Book();
     (*emptyBook).setTitle(bookForm.getTitle());
@@ -28,7 +27,7 @@ void VisitorReadForm::visitBookForm(BookCreationForm &bookForm)
     item = QSharedPointer<AbstractItem>(emptyBook);
 }
 
-void VisitorReadForm::visitGameForm(GameCreationForm &gameForm)
+void VisitorReadForm::visitGameForm(const GameCreationForm &gameForm)
 {
     Game *emptyGame = new Game();
     (*emptyGame).setTitle(gameForm.getTitle());
@@ -41,7 +40,7 @@ void VisitorReadForm::visitGameForm(GameCreationForm &gameForm)
     item = QSharedPointer<AbstractItem>(emptyGame);
 }
 
-void VisitorReadForm::visitMusicForm(MusicCreationForm &musicForm)
+void VisitorReadForm::visitMusicForm(const MusicCreationForm &musicForm)
 {
     Music *emptyMusic = new Music();
     (*emptyMusic).setTitle(musicForm.getTitle());

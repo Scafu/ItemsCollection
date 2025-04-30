@@ -152,7 +152,11 @@ QLayout *ItemPageUI::showPage(QSharedPointer<AbstractItem> item)
 
     // Connessioni
     connect(editButton, &QPushButton::clicked, this, &ItemPageUI::editClicked);
-    connect(deleteButton, &QPushButton::clicked, this, &ItemPageUI::removeClicked);
+    connect(deleteButton, &QPushButton::clicked, this, [&]
+            {
+        auto risposta = QMessageBox::question(this, "Conferma", "Sei sicuro di voler eliminare l'item?", QMessageBox::Yes | QMessageBox::No);
+        if (risposta == QMessageBox::Yes)
+            emit removeClicked(); });
     connect(backButton, &QPushButton::clicked, this, &ItemPageUI::backClicked);
     return detailsLayoutNoEdit;
 }

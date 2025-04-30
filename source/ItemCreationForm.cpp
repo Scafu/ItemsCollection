@@ -55,21 +55,51 @@ ItemCreationForm::ItemCreationForm(QWidget *parent) : QWidget(parent)
 
     // Connessioni
     connect(imageFolderButton, &QPushButton::clicked, this, &ItemCreationForm::selectImage);
-    connect(createButton, &QPushButton::clicked, this, &ItemCreationForm::createItemCheck);
-    connect(deleteButton, &QPushButton::clicked, this, &ItemCreationForm::deleteCreation);
+    connect(createButton, &QPushButton::clicked, this, [&]
+            {   if(this->isDataValid())
+                emit createItem(); });
+    connect(deleteButton, &QPushButton::clicked, this, [&]
+            {
+        auto risposta = QMessageBox::question(this, "Conferma", "Sei sicuro di voler annullare l'operazione?", QMessageBox::Yes | QMessageBox::No);
+        if (risposta == QMessageBox::Yes)
+            emit deleteCreation(); });
 }
 
 // Funzioni getter testuali
-QString ItemCreationForm::getCoverImage() const { return coverImageInput->text(); }
-QString ItemCreationForm::getTitle() const { return titleInput->text(); }
-QString ItemCreationForm::getDescription() const { return descriptionInput->text(); }
-int ItemCreationForm::getYear() const { return yearInput->text().toInt(); }
+QString ItemCreationForm::getCoverImage() const
+{
+    return coverImageInput->text();
+}
+QString ItemCreationForm::getTitle() const
+{
+    return titleInput->text();
+}
+QString ItemCreationForm::getDescription() const
+{
+    return descriptionInput->text();
+}
+int ItemCreationForm::getYear() const
+{
+    return yearInput->text().toInt();
+}
 
 // Relative funzioni setter
-void ItemCreationForm::setCoverImage(const QString &newImage) { coverImageInput->setText(newImage); }
-void ItemCreationForm::setTitle(const QString &newTitle) { titleInput->setText(newTitle); }
-void ItemCreationForm::setDescription(const QString &newDescription) { descriptionInput->setText(newDescription); }
-void ItemCreationForm::setYear(const int &newYear) { yearInput->setText(QString::number(newYear)); }
+void ItemCreationForm::setCoverImage(const QString &newImage)
+{
+    coverImageInput->setText(newImage);
+}
+void ItemCreationForm::setTitle(const QString &newTitle)
+{
+    titleInput->setText(newTitle);
+}
+void ItemCreationForm::setDescription(const QString &newDescription)
+{
+    descriptionInput->setText(newDescription);
+}
+void ItemCreationForm::setYear(const int &newYear)
+{
+    yearInput->setText(QString::number(newYear));
+}
 
 // Funzioni di servizio
 
@@ -94,18 +124,18 @@ QSharedPointer<AbstractItem> ItemCreationForm::createDerivedItem(const QString &
         return nullptr;
 }
 
-void ItemCreationForm::createItemCheck()
+bool ItemCreationForm::isDataValid()
 {
     if (titleInput->text().isEmpty())
     {
         QMessageBox::warning(this, "Errore", "Serve almeno il titolo per poter creare l'item");
-        return;
+        return false;
     }
-    if (yearInput->text().toInt() <= 0)
+    bool isInt;
+    if (yearInput->text().toInt(&isInt) <= 0 || !isInt)
     {
         QMessageBox::warning(this, "Errore", "L'anno inserito deve essere un numero maggiore di 0");
-        return;
+        return false;
     }
-    else
-        emit createItem();
+    return true;
 }

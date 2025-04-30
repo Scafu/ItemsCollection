@@ -9,14 +9,14 @@
 #include <QMap>
 #include <QVariant>
 
-class VisitorReadForm : public FormVisitor
+class VisitorReadForm : public FormConstVisitor
 {
 public:
     explicit VisitorReadForm(ItemCreationForm *form);
     QSharedPointer<AbstractItem> getCompleteItem();
-    void visitBookForm(BookCreationForm &bookForm) override;
-    void visitGameForm(GameCreationForm &gameForm) override;
-    void visitMusicForm(MusicCreationForm &musicForm) override;
+    void visitBookForm(const BookCreationForm &bookForm) override;
+    void visitGameForm(const GameCreationForm &gameForm) override;
+    void visitMusicForm(const MusicCreationForm &musicForm) override;
 
 private:
     ItemCreationForm *form;

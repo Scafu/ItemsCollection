@@ -11,9 +11,9 @@ GameCreationForm::GameCreationForm(QWidget *parent) : ItemCreationForm(parent)
     formLayout->addRow("Genere", genreInput);
 }
 
-QString GameCreationForm::getPublisher() const { return publisherInput->text(); }
-QString GameCreationForm::getPlatform() const { return platformInput->text(); }
-QString GameCreationForm::getGenre() const { return genreInput->text(); }
+QString GameCreationForm::getPublisher() const { return publisherInput->text().trimmed().isEmpty() ? "Non disponibile" : genreInput->text(); }
+QString GameCreationForm::getPlatform() const { return platformInput->text().trimmed().isEmpty() ? "Non disponibile" : genreInput->text(); }
+QString GameCreationForm::getGenre() const { return genreInput->text().trimmed().isEmpty() ? "Non disponibile" : genreInput->text(); }
 QMap<QString, QVariant> GameCreationForm::getNotDefaultFields() const
 {
     QMap<QString, QVariant> fieldToRead;

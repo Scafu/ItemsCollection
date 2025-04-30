@@ -40,13 +40,11 @@ public:
     virtual void clearFields() = 0;
     QString selectImage();
     static QSharedPointer<AbstractItem> createDerivedItem(const QString &typeChosen);
+    virtual bool isDataValid();
 
     // Funzioni di visitor
     virtual void accept(FormVisitor &Visitor) = 0;
     virtual void accept(FormConstVisitor &constVisitor) const = 0;
-
-public slots:
-    void createItemCheck();
 
 signals:
     void createItem();

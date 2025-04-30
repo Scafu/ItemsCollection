@@ -13,7 +13,6 @@ ItemPageEditUI::ItemPageEditUI(QSharedPointer<AbstractItem> itemChosen, QWidget 
     QDir dir(QApplication::applicationDirPath());
     dir.cdUp();
 
-    qDebug() << "Costruttore chiamato\n";
     customFont.setPointSize(13);
 
     customSizePolicy = new QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
@@ -226,7 +225,11 @@ QLayout *ItemPageEditUI::showPage(QSharedPointer<AbstractItem> item)
             { updateFields();
                 Collezione::getCollezione().editItem(item, this->fieldsEdited); 
             emit confirmClicked(); });
-    connect(backButton, &QPushButton::clicked, this, &ItemPageEditUI::backClicked);
+    connect(backButton, &QPushButton::clicked, this, [&]
+            {
+        auto risposta = QMessageBox::question(this, "Conferma", "Sei sicuro di voler annullare la modifica?", QMessageBox::Yes | QMessageBox::No);
+        if (risposta == QMessageBox::Yes)
+            emit backClicked(); });
 
     detailsLayoutEdit->setSpacing(20);
     return detailsLayoutEdit;
@@ -244,7 +247,6 @@ QString ItemPageEditUI::selectImage()
 
 void ItemPageEditUI::updateFields()
 {
-    qDebug() << "Funzione chiamata";
     fieldsEdited["Titolo"] = title->text();
     fieldsEdited["Anno"] = year->text().toInt();
     fieldsEdited["Immagine di Copertina"] = cover->text();
