@@ -237,7 +237,7 @@ QLayout *ItemPageEditUI::showPage(QSharedPointer<AbstractItem> item)
 
 QString ItemPageEditUI::selectImage()
 {
-    QString image = QFileDialog::getOpenFileName(this, "Seleziona l'immagine di copertina", "", "Immagini(*.png, *.jpeg, *.jpg)");
+    QString image = QFileDialog::getOpenFileName(this, "Seleziona l'immagine di copertina", "", "Immagini (*.png, *.jpeg, *.jpg)");
     if (!image.isEmpty())
     {
         cover->setText(image);

@@ -234,7 +234,7 @@ void Collezione::saveCollection()
 
 void Collezione::restoreDefault()
 {
-    auto risposta = QMessageBox::question(nullptr, "Ripristino", "Sei sicuro di voler annullare ripristinare la collezione di Default?", QMessageBox::Yes | QMessageBox::No);
+    auto risposta = QMessageBox::question(nullptr, "Ripristino", "Sei sicuro di voler ripristinare la collezione di Default?", QMessageBox::Yes | QMessageBox::No);
     if (risposta == QMessageBox::No)
         return;
 

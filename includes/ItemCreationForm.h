@@ -40,15 +40,15 @@ public:
     virtual void clearFields() = 0;
     QString selectImage();
     static QSharedPointer<AbstractItem> createDerivedItem(const QString &typeChosen);
-    virtual bool isDataValid();
+    virtual bool isDataValid(); // controlla che i dati che necessitano certe condizioni siano validi
 
     // Funzioni di visitor
     virtual void accept(FormVisitor &Visitor) = 0;
     virtual void accept(FormConstVisitor &constVisitor) const = 0;
 
 signals:
-    void createItem();
-    void deleteCreation();
+    void createItem();     // conferma la creazione
+    void deleteCreation(); // annulla la creazione
 
 protected:
     QFont customFont;

@@ -37,8 +37,8 @@ public:
     virtual void accept(AbstractConstVisitor &constVisitor) const = 0;
 
     // Funzioni relative al JSON
-    virtual void itemToFileJSON(QJsonObject &jObject) const = 0;
-    virtual void itemFromFileJSON(const QJsonObject &jObject) = 0;
+    virtual void itemToFileJSON(QJsonObject &jObject) const = 0;   // salva i singoli item in una struttura JSON
+    virtual void itemFromFileJSON(const QJsonObject &jObject) = 0; // prende i dati di un singolo item nel JSON e li salva in un singolo abstractItem
 
 private:
     QString coverImage;

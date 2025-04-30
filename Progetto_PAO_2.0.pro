@@ -6,6 +6,9 @@ TEMPLATE = app
 TARGET = Progetto_PAO_2.0
 INCLUDEPATH += ./includes
 CONFIG += console
+OBJECT_DIR = release
+MOC_DIR = release
+RCC_DIR = release
 DESTDIR = release
 QT += core gui widgets
 

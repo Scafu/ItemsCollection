@@ -26,7 +26,7 @@ CustomToolBar::CustomToolBar(MainWindow *mainWindow, QWidget *parent) : QToolBar
     connect(crea, &QPushButton::clicked, mainWindow, &MainWindow::showCrea);
     connect(exit, &QPushButton::clicked, mainWindow, [mainWindow]
             {
-        auto risposta = QMessageBox::question(mainWindow, "Conferma", "Sei sicuro di voler annullare la modifica?", QMessageBox::Yes | QMessageBox::No);
+        auto risposta = QMessageBox::question(mainWindow, "Conferma", "Sei sicuro di voler uscire dal programma?", QMessageBox::Yes | QMessageBox::No);
         if (risposta == QMessageBox::Yes)
             mainWindow->close(); });
 

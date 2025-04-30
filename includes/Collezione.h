@@ -41,8 +41,8 @@ public:
     Filters getActiveFilter() const;
 
     // Funzioni JSON
-    void toFileJSON(const QString &filePath) const;
-    void fromFileJSON(const QString &filePath);
+    void toFileJSON(const QString &filePath) const; // salva l'itemList nella struttura JSON
+    void fromFileJSON(const QString &filePath);     // recupera la struttura del JSON e la salva nell'itemList
 
 public slots:
     void filterBooks();

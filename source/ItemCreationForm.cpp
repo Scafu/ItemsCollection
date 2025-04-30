@@ -105,7 +105,7 @@ void ItemCreationForm::setYear(const int &newYear)
 
 QString ItemCreationForm::selectImage()
 {
-    QString image = QFileDialog::getOpenFileName(this, "Seleziona l'immagine di copertina", "", "Immagini(*.png, *.jpeg, *.jpg)");
+    QString image = QFileDialog::getOpenFileName(this, "Seleziona l'immagine di copertina", "", "Immagini (*.png, *.jpeg, *.jpg)");
     if (!image.isEmpty())
     {
         coverImageInput->setText(image);

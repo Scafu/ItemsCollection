@@ -327,12 +327,27 @@ void MainWindow::showAbout()
     {
         aboutPage = new QWidget;
         QVBoxLayout *layoutAbout = new QVBoxLayout();
-        QLabel *label = new QLabel("La collezioni di oggetti è un progetto valido per l'anno accademico 2024/2025 per il corso Programmazione ad Oggetti, \ned una vera e propria collezione di item sfruttando il framework QT in linguaggio C++");
+        QLabel *label = new QLabel("La collezioni di oggetti è un progetto valido per l'anno accademico 2024/2025 per il corso Programmazione ad Oggetti, \ned una vera e propria collezione di item sfruttando il framework QT in linguaggio C++\n\n Creato da Alessandro Mazzariol");
+        QHBoxLayout *gitHubLayout = new QHBoxLayout();
+        QLabel *gitHubIcon = new QLabel;
+        QLabel *repository = new QLabel("<a href=\"https://github.com/Scafu/Progetto_PAO_2.0\">Repository Github</a>");
+        repository->setTextInteractionFlags(Qt::TextBrowserInteraction);
+        repository->setOpenExternalLinks(true);
+        gitHubIcon->setFixedSize(64, 64);
+        gitHubIcon->setScaledContents(true);
+        QPixmap pixmap(":/assets/icon/github.png");
+        gitHubIcon->setPixmap(pixmap);
+        gitHubLayout->addWidget(gitHubIcon);
+        gitHubLayout->addWidget(repository);
+        gitHubLayout->setAlignment(Qt::AlignHCenter);
         customFont.setPointSize(16);
         label->setFont(customFont);
         label->setWordWrap(true);
         label->setAlignment(Qt::AlignCenter);
         layoutAbout->addWidget(label);
+        layoutAbout->addSpacerItem(new QSpacerItem(0, 20));
+        layoutAbout->addLayout(gitHubLayout);
+        layoutAbout->setAlignment(Qt::AlignCenter);
         aboutPage->setLayout(layoutAbout);
         stack->addWidget(aboutPage);
         stack->setCurrentWidget(aboutPage);

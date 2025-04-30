@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>assets/icon/database.png</file>
+        <file>assets/icon/github.png</file>
     </qresource>
 </RCC>

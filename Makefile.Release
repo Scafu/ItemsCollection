@@ -190,6 +190,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_resources.cpp
 release/qrc_resources.cpp: resources.qrc \
 		C:/msys64/mingw64/share/qt6/bin/rcc.exe \
+		assets/icon/github.png \
 		assets/icon/database.png
 	C:\msys64\mingw64\share\qt6\bin\rcc.exe -name resources resources.qrc -o release\qrc_resources.cpp
 
@@ -228,6 +229,7 @@ release/moc_CustomToolBar.cpp: includes/CustomToolBar.h \
 		includes/AbstractConstVisitor.h \
 		includes/ItemPageUI.h \
 		includes/ItemPageEditUI.h \
+		includes/Collezione.h \
 		release/moc_predefs.h \
 		C:/msys64/mingw64/share/qt6/bin/moc.exe
 	C:\msys64\mingw64\share\qt6\bin\moc.exe $(DEFINES) --include C:/Users/aless/Documents/Github/Progetto_PAO_2.0/release/moc_predefs.h -IC:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -IC:/Users/aless/Documents/Github/Progetto_PAO_2.0 -IC:/Users/aless/Documents/Github/Progetto_PAO_2.0/includes -IC:/msys64/mingw64/include/qt6 -IC:/msys64/mingw64/include/qt6/QtWidgets -IC:/msys64/mingw64/include/qt6/QtGui -IC:/msys64/mingw64/include/qt6/QtCore -IC:/msys64/mingw64/include/c++/14.2.0 -IC:/msys64/mingw64/include/c++/14.2.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/14.2.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include-fixed includes\CustomToolBar.h -o release\moc_CustomToolBar.cpp
@@ -354,7 +356,8 @@ release/CustomToolBar.o: source/CustomToolBar.cpp includes/CustomToolBar.h \
 		includes/AbstractVisitor.h \
 		includes/AbstractConstVisitor.h \
 		includes/ItemPageUI.h \
-		includes/ItemPageEditUI.h
+		includes/ItemPageEditUI.h \
+		includes/Collezione.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\CustomToolBar.o source\CustomToolBar.cpp
 
 release/Game.o: source/Game.cpp includes/Game.h \
