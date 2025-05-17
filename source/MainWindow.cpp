@@ -93,12 +93,14 @@ void MainWindow::showHome()
         collezioneAction->addWidget(restoreDefault);
         itemsArea = new QScrollArea;
         itemsArea->setWidgetResizable(true);
-        itemsArea->setFixedSize(1000, 800);
+        itemsArea->setMinimumSize(500, 300);
+        itemsArea->setMaximumSize(1000, 800);
 
         homeLayout->addLayout(layoutRicerca);
         homeLayout->addSpacerItem(new QSpacerItem(0, 50));
         homeLayout->addLayout(collezioneAction);
-        homeLayout->addWidget(itemsArea, 0, Qt::AlignCenter);
+        homeLayout->addWidget(itemsArea, 1);
+        homeLayout->addStretch();
 
         stack->addWidget(homePage);
         stack->setCurrentWidget(homePage);

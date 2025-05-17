@@ -2,7 +2,7 @@
     WIDGET CHE VIENE MOSTRATO NELLA GRIGLIA DELLA HOMEPAGE
 */
 #ifndef ITEMWIDGETUI_H
-#define ITEMWIDGETUI_h
+#define ITEMWIDGETUI_H
 
 #include "AbstractItem.h"
 #include "Book.h"
