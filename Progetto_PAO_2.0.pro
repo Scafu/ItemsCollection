@@ -6,6 +6,7 @@ TEMPLATE = app
 TARGET = Progetto_PAO_2.0
 INCLUDEPATH += ./includes
 CONFIG += console
+CONFIG += release
 OBJECT_DIR = release
 MOC_DIR = release
 RCC_DIR = release
