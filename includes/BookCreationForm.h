@@ -30,7 +30,7 @@ public:
 
     // Funzioni di servizio
     void clearFields() override;
-    bool isDataValid();
+    bool isDataValid() override;
     // Funzioni di visitor
     void accept(FormVisitor &Visitor) override;
     void accept(FormConstVisitor &constVisitor) const override;

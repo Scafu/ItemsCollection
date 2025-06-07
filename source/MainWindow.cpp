@@ -13,7 +13,7 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
-    setWindowTitle("Collezione di Oggetti");
+    setWindowTitle("ItemsCollection");
     setWindowIcon(QIcon(":/assets/icon/database.png"));
     stack = new QStackedWidget(this);
     toolBar = new CustomToolBar(this);
@@ -36,7 +36,7 @@ void MainWindow::showHome()
 {
     if (!homePage) // se non è stata creata in precedenza
     {
-
+        qDebug() << "Home creata";
         customFont.setPointSize(12);
 
         homePage = new QWidget(this);
@@ -123,12 +123,29 @@ void MainWindow::showHome()
                 { Collezione::getCollezione().searchTitle(text); });
         connect(saveCollection, &QPushButton::clicked, &Collezione::getCollezione(), &Collezione::saveCollection);
         connect(restoreDefault, &QPushButton::clicked, &Collezione::getCollezione(), &Collezione::restoreDefault);
-        connect(&Collezione::getCollezione(), &Collezione::collectionLoaded, this, &MainWindow::updateAreaItem);
+        connect(&Collezione::getCollezione(), &Collezione::collectionLoaded, this, &MainWindow::showHome);
         updateColorButtonFilters();
         updateAreaItem();
     }
     else
     {
+        switch (Collezione::getCollezione().getActiveFilter())
+        {
+        case Collezione::BOOKS:
+            Collezione::getCollezione().filterBooks();
+            break;
+        case Collezione::GAMES:
+            Collezione::getCollezione().filterGames();
+            break;
+        case Collezione::MUSIC:
+            Collezione::getCollezione().filterMusic();
+            break;
+        case Collezione::ALL:
+            Collezione::getCollezione().filterAll();
+            break;
+        default:
+            break;
+        }
         updateAreaItem();
         stack->setCurrentWidget(homePage);
     }
@@ -329,7 +346,7 @@ void MainWindow::showAbout()
     {
         aboutPage = new QWidget;
         QVBoxLayout *layoutAbout = new QVBoxLayout();
-        QLabel *label = new QLabel("La collezioni di oggetti è un progetto valido per l'anno accademico 2024/2025 per il corso Programmazione ad Oggetti, \ned una vera e propria collezione di item sfruttando il framework QT in linguaggio C++\n\n Creato da Alessandro Mazzariol");
+        QLabel *label = new QLabel("ItemsCollection è un progetto valido per l'anno accademico 2024/2025 per il corso Programmazione ad Oggetti, \ned una vera e propria collezione di item sfruttando il framework QT in linguaggio C++\n\n Creato da Alessandro Mazzariol");
         QHBoxLayout *gitHubLayout = new QHBoxLayout();
         QLabel *gitHubIcon = new QLabel;
         QLabel *repository = new QLabel("<a href=\"https://github.com/Scafu/Progetto_PAO_2.0\">Repository Github</a>");
