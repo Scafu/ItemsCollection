@@ -104,7 +104,6 @@ void MainWindow::showHome()
 
         stack->addWidget(homePage);
         stack->setCurrentWidget(homePage);
-        updateAreaItem();
 
         // Connessioni
         connect(bookButtonFilter, &QPushButton::clicked, &Collezione::getCollezione(), [this]()
@@ -126,6 +125,7 @@ void MainWindow::showHome()
         connect(restoreDefault, &QPushButton::clicked, &Collezione::getCollezione(), &Collezione::restoreDefault);
         connect(&Collezione::getCollezione(), &Collezione::collectionLoaded, this, &MainWindow::updateAreaItem);
         updateColorButtonFilters();
+        updateAreaItem();
     }
     else
     {

@@ -7,10 +7,11 @@ TARGET = Progetto_PAO_2.0
 INCLUDEPATH += ./includes
 CONFIG += console
 CONFIG += release
-OBJECT_DIR = release
-MOC_DIR = release
-RCC_DIR = release
 DESTDIR = release
+OBJECTS_DIR = $$DESTDIR
+MOC_DIR = $$DESTDIR
+RCC_DIR = $$DESTDIR
+
 QT += core gui widgets
 
 # You can make your code fail to compile if you use deprecated APIs.

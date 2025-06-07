@@ -81,5 +81,16 @@
         "Immagine di Copertina": "assets/cover/The_Kid_Laroi.png",
         "Tipo": "Music",
         "Titolo": "Love Again"
+    },
+    {
+        "Anno": 0,
+        "Autore": "Non disponibile",
+        "Descrizione": "",
+        "Immagine di Copertina": "",
+        "Lingua": "Non disponibile",
+        "Numero di Capitoli": 123,
+        "Numero di Pagine": 123,
+        "Tipo": "Book",
+        "Titolo": "asda"
     }
 ]
