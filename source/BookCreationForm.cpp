@@ -81,7 +81,6 @@ bool BookCreationForm::isDataValid()
         QMessageBox::warning(this, "Errore", "L'anno inserito deve essere un numero maggiore di 0");
         return false;
     }
-    return true;
     if (numPagesInput->text().toInt(&isInt) <= 0 || !isInt)
     {
         QMessageBox::warning(this, "Errore", "Il numero di pagine deve essere in formato numerico e maggiore di 0");
@@ -92,4 +91,5 @@ bool BookCreationForm::isDataValid()
         QMessageBox::warning(this, "Errore", "Il numero di capitoli deve essere in formato numerico e maggiore di 0");
         return false;
     }
+    return true;
 }
