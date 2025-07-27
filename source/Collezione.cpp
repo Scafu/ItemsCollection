@@ -142,7 +142,6 @@ void Collezione::fromFileJSON(const QString &filePath)
         }
         else if (type == "Game")
         {
-
             itemToCreate = QSharedPointer<AbstractItem>(new Game("", "", "", 0, "", "", ""));
         }
         else

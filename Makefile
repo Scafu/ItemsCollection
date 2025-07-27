@@ -397,7 +397,6 @@ Makefile: Progetto_PAO_2.0.pro C:/msys64/mingw64/share/qt6/mkspecs/win32-g++/qma
 		C:/msys64/mingw64/share/qt6/mkspecs/features/resolve_config.prf \
 		C:/msys64/mingw64/share/qt6/mkspecs/features/exclusive_builds_post.prf \
 		C:/msys64/mingw64/share/qt6/mkspecs/features/default_post.prf \
-		C:/msys64/mingw64/share/qt6/mkspecs/features/win32/console.prf \
 		C:/msys64/mingw64/share/qt6/mkspecs/features/precompile_header.prf \
 		C:/msys64/mingw64/share/qt6/mkspecs/features/warn_on.prf \
 		C:/msys64/mingw64/share/qt6/mkspecs/features/permissions.prf \
@@ -409,11 +408,13 @@ Makefile: Progetto_PAO_2.0.pro C:/msys64/mingw64/share/qt6/mkspecs/win32-g++/qma
 		C:/msys64/mingw64/share/qt6/mkspecs/features/uic.prf \
 		C:/msys64/mingw64/share/qt6/mkspecs/features/qmake_use.prf \
 		C:/msys64/mingw64/share/qt6/mkspecs/features/file_copies.prf \
+		C:/msys64/mingw64/share/qt6/mkspecs/features/win32/windows.prf \
 		C:/msys64/mingw64/share/qt6/mkspecs/features/testcase_targets.prf \
 		C:/msys64/mingw64/share/qt6/mkspecs/features/exceptions.prf \
 		C:/msys64/mingw64/share/qt6/mkspecs/features/yacc.prf \
 		C:/msys64/mingw64/share/qt6/mkspecs/features/lex.prf \
 		Progetto_PAO_2.0.pro \
+		C:/msys64/mingw64/lib/Qt6EntryPoint.prl \
 		C:/msys64/mingw64/share/qt6/mkspecs/features/build_pass.prf \
 		resources.qrc
 	$(QMAKE) -o Makefile Progetto_PAO_2.0.pro
@@ -744,7 +745,6 @@ C:/msys64/mingw64/share/qt6/mkspecs/features/win32/default_pre.prf:
 C:/msys64/mingw64/share/qt6/mkspecs/features/resolve_config.prf:
 C:/msys64/mingw64/share/qt6/mkspecs/features/exclusive_builds_post.prf:
 C:/msys64/mingw64/share/qt6/mkspecs/features/default_post.prf:
-C:/msys64/mingw64/share/qt6/mkspecs/features/win32/console.prf:
 C:/msys64/mingw64/share/qt6/mkspecs/features/precompile_header.prf:
 C:/msys64/mingw64/share/qt6/mkspecs/features/warn_on.prf:
 C:/msys64/mingw64/share/qt6/mkspecs/features/permissions.prf:
@@ -756,11 +756,13 @@ C:/msys64/mingw64/share/qt6/mkspecs/features/win32/opengl.prf:
 C:/msys64/mingw64/share/qt6/mkspecs/features/uic.prf:
 C:/msys64/mingw64/share/qt6/mkspecs/features/qmake_use.prf:
 C:/msys64/mingw64/share/qt6/mkspecs/features/file_copies.prf:
+C:/msys64/mingw64/share/qt6/mkspecs/features/win32/windows.prf:
 C:/msys64/mingw64/share/qt6/mkspecs/features/testcase_targets.prf:
 C:/msys64/mingw64/share/qt6/mkspecs/features/exceptions.prf:
 C:/msys64/mingw64/share/qt6/mkspecs/features/yacc.prf:
 C:/msys64/mingw64/share/qt6/mkspecs/features/lex.prf:
 Progetto_PAO_2.0.pro:
+C:/msys64/mingw64/lib/Qt6EntryPoint.prl:
 C:/msys64/mingw64/share/qt6/mkspecs/features/build_pass.prf:
 resources.qrc:
 qmake: FORCE

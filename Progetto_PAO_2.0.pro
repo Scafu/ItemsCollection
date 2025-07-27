@@ -5,7 +5,6 @@
 TEMPLATE = app
 TARGET = Progetto_PAO_2.0
 INCLUDEPATH += ./includes
-CONFIG += console
 CONFIG += release
 DESTDIR = release
 OBJECTS_DIR = $$DESTDIR
@@ -41,8 +40,7 @@ HEADERS += includes/AbstractConstVisitor.h \
            includes/Music.h \
            includes/MusicCreationForm.h \
            includes/VisitorCreateForm.h \
-           includes/VisitorReadForm.h \
-           includes/VisitorReadItem.h 
+           includes/VisitorReadForm.h 
 
 SOURCES += source/AbstractItem.cpp \
            source/Book.cpp \
@@ -60,6 +58,5 @@ SOURCES += source/AbstractItem.cpp \
            source/Music.cpp \
            source/MusicCreationForm.cpp \
            source/VisitorCreateForm.cpp \
-           source/VisitorReadForm.cpp \
-           source/VisitorReadItem.cpp 
+           source/VisitorReadForm.cpp 
 RESOURCES += resources.qrc

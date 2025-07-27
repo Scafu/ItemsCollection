@@ -4,7 +4,6 @@
 #include "ItemCreationForm.h"
 #include "VisitorCreateForm.h"
 #include "VisitorReadForm.h"
-#include "VisitorReadItem.h"
 #include "ItemWidgetUI.h"
 #include <QIcon>
 #include <QApplication>
@@ -36,9 +35,7 @@ void MainWindow::showHome()
 {
     if (!homePage) // se non è stata creata in precedenza
     {
-        qDebug() << "Home creata";
         customFont.setPointSize(12);
-
         homePage = new QWidget(this);
         QVBoxLayout *homeLayout = new QVBoxLayout();
         homeLayout->setAlignment(Qt::AlignCenter);
@@ -331,8 +328,8 @@ void MainWindow::showTypedForm(const QString &typeChosen)
     if (!itemCreato)
         return;
 
-    VisitorReadItem *visitorReadItem = new VisitorReadItem;
-    itemCreato->accept(*visitorReadItem);
+    // VisitorReadItem *visitorReadItem = new VisitorReadItem;
+    // itemCreato->accept(*visitorReadItem);
 
     Collezione::getCollezione().addItem(itemCreato);
     Collezione::getCollezione().toFileJSON(QApplication::applicationDirPath() + "/../JSON/Items.json");
