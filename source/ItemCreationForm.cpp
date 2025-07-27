@@ -1,4 +1,5 @@
 #include "ItemCreationForm.h"
+#include <QApplication>
 #include "Book.h"
 #include "Game.h"
 #include "Music.h"
@@ -136,6 +137,10 @@ bool ItemCreationForm::isDataValid()
     {
         QMessageBox::warning(this, "Errore", "L'anno inserito deve essere un numero maggiore di 0");
         return false;
+    }
+    if (coverImageInput->text().isEmpty())
+    {
+        coverImageInput->setText(QApplication::applicationDirPath() + "/../assets/cover/notAvailable/ImageNotAvailable.jpg");
     }
     return true;
 }

@@ -328,9 +328,6 @@ void MainWindow::showTypedForm(const QString &typeChosen)
     if (!itemCreato)
         return;
 
-    // VisitorReadItem *visitorReadItem = new VisitorReadItem;
-    // itemCreato->accept(*visitorReadItem);
-
     Collezione::getCollezione().addItem(itemCreato);
     Collezione::getCollezione().toFileJSON(QApplication::applicationDirPath() + "/../JSON/Items.json");
     showHome();

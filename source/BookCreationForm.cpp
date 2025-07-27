@@ -1,6 +1,5 @@
 #include "BookCreationForm.h"
 #include <QMessageBox>
-#include <QApplication>
 BookCreationForm::BookCreationForm(QWidget *parent) : ItemCreationForm(parent)
 {
     authorInput = new QLineEdit();
@@ -91,11 +90,6 @@ bool BookCreationForm::isDataValid()
     {
         QMessageBox::warning(this, "Errore", "Il numero di capitoli deve essere in formato numerico e maggiore di 0");
         return false;
-    }
-    if (coverImageInput->text().isEmpty())
-    {
-
-        coverImageInput->setText(QApplication::applicationDirPath() + "/../assets/cover/notAvailable/ImageNotAvailable.jpg");
     }
     return true;
 }
